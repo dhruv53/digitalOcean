@@ -2,7 +2,7 @@
 
 ### Install express server on project
 ```javascript
-npm install —save express
+npm install express
 ```
 ### Create a server.js in root directory and copy the code below
 (outside src or public folder)
@@ -11,7 +11,7 @@ const express = require('express');
 const path = require('path'); 
 const app = express(); 
 app.use(express.static(path.join(__dirname, 'build'))); 
-app.get(‘/*’, function (req, res) { 
+app.get("/*", function (req, res) { 
 res.sendFile(path.join(__dirname, 'build', 'index.html')); 
 }); 
 app.listen(9000);
