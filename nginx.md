@@ -21,4 +21,10 @@ ls
 6. Add a domain name(optional)
 - Replace _ with domain name. <br/><code> server_name _</code> -> <code>server_name example.com</code>
 
-7. Quit File using <code>wq</code>
+7. Quit vi using<br/>
+- press <code>Esc</code><br/>
+- Press <code>:</code>(colon)<br/>
+- Enter <code>q!</code>
+
+8. Visit the ip address without port nuumber to check if nginx is running or not
+9. Setup a proxy server
