@@ -18,13 +18,42 @@ ls
  ```javascript
  vi default
  ```
-6. Add a domain name(optional)
-- Replace _ with domain name. <br/><code> server_name _</code> -> <code>server_name example.com</code>
+6. Configuration
+- Add a domain name(optional)
+Replace _ with domain name. <br/><code> server_name _</code> -> <code>server_name example.com</code>
+- Proxy to redirect users from ip address to http://localhost:9000<br/>
+<b>Comment location code block</b> and add the below code.
+```javascript
+location / {
+        proxy_pass http://localhost:9000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+```
 
 7. Quit vi using<br/>
-- press <code>Esc</code><br/>
+- Press <code>Esc</code><br/>
 - Press <code>:</code>(colon)<br/>
-- Enter <code>q!</code>
+To exit without saving anything
+- Enter <code>q!</code><br/>
+To exit while saving changes
+- Enter <code>wq</code>
 
-8. Visit the ip address without port nuumber to check if nginx is running or not
-9. Setup a proxy server
+8. Check the saved file syntax
+```javascript
+nginx -t
+```
+9. Reload nginx to update proxy settings
+```javascript
+systemctl reload nginx
+```
+10. Now navigate to the project folder & run server to test proxy config
+```javascript
+cd ~
+cd projectName
+node server.js
+```
+11. Visit the ip address without port number to check if nginx is running the website or not.
